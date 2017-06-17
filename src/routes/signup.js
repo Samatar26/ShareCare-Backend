@@ -11,12 +11,13 @@ module.exports = {
       if (err) console.log(err);
 
       if (res.length) {
+        // reply({error: 'Email is in use'})
         reply.redirect('/');
       } else {
         postData.CreateUser(email, password, (err, res) => {
           if (err) reply('dad');
           else {
-            reply(res);
+            reply({ success: true });
           }
         });
       }
