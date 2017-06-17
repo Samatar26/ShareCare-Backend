@@ -24,6 +24,7 @@
     "hapi": "^16.4.3",
     "hapi-auth-jwt2": "^7.2.4",
     "joi": "^10.6.0",
+    "jwt-simple": "^0.5.1",
     "pg": "^6.2.4"
   },
   "devDependencies": {
