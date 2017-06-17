@@ -1,6 +1,7 @@
 const data = require('./../database/getData');
-
+const bcrypt = require('bcrypt-nodejs');
 const validate = (decoded, request, cb) => {
+  console.log('ok');
   console.log(decoded);
   data.getUsersById(decoded.sub, (err, res) => {
     if (err) {
@@ -15,4 +16,17 @@ const validate = (decoded, request, cb) => {
   });
 };
 
-module.exports = validate;
+const basicValidation = (email, inputPassword, cb) => {
+  data.getUsers(email, (err, res) => {
+    if (err) return cb(err);
+    if (res.length) {
+      bcrypt.compare(inputPassword, res[0].password, (err, isMatch) => {
+        if (err) return cb(err);
+        return cb(null, res[0]);
+      });
+    } else {
+      return cb(new Error('user not found'));
+    }
+  });
+};
+module.exports = { validate, basicValidation };

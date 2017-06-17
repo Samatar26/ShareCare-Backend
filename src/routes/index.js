@@ -1,1 +1,1 @@
-module.exports = [require('./home'), require('./signup')];
+module.exports = [require('./home'), require('./signup'), require('./signin')];
