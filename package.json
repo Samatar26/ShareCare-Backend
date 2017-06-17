@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/start.js",
-    "test": "jest",
     "test": "node tests/tests.js | tap-spec",
     "coverage": "istanbul cover tests/tests.js"
   },
@@ -20,6 +19,7 @@
   },
   "homepage": "https://github.com/Samatar26/ShareCare-Backend#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "env2": "^2.2.0",
     "hapi": "^16.4.3",
     "hapi-auth-jwt2": "^7.2.4",
