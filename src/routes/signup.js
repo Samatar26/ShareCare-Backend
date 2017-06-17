@@ -6,8 +6,10 @@ const tokenForUser = require('./../bcrypt/jwt');
 module.exports = {
   method: 'POST',
   path: '/signup',
+  config: {
+    auth: false,
+  },
   handler: (request, reply) => {
-    console.log(process.env.SECRET);
     const { email, password } = request.payload;
     const hashedPassword = encryptPassword(password).then(hashedPassword => {
       data.getUsers(email, (err, res) => {

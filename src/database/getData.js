@@ -12,4 +12,14 @@ data.getUsers = (inputEmail, cb) => {
   );
 };
 
+data.getUsersById = (inputId, cb) => {
+  connection.query(
+    `SELECT * FROM users WHERE id = '${inputId}'`,
+    (err, res) => {
+      if (err) return cb(err);
+      cb(null, res.rows);
+    }
+  );
+};
+
 module.exports = data;
