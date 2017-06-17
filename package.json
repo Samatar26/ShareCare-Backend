@@ -1,0 +1,26 @@
+{
+  "name": "sharecare-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samatar26/ShareCare-Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samatar26/ShareCare-Backend/issues"
+  },
+  "homepage": "https://github.com/Samatar26/ShareCare-Backend#readme",
+  "dependencies": {
+    "env2": "^2.2.0",
+    "hapi": "^16.4.3",
+    "hapi-auth-jwt2": "^7.2.4",
+    "joi": "^10.6.0",
+    "pg": "^6.2.4"
+  }
+}
