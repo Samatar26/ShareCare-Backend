@@ -12,19 +12,19 @@ module.exports = {
       if (err) {
         switch (err.message) {
           case 'database':
-            reply('database error');
+            reply({ error: 'database error' });
             return;
           case 'bcrypt':
-            reply('bcrypt error');
+            reply({ error: 'bcrypt error' });
             return;
           case 'User not found':
-            reply('user doesnt exist');
+            reply({ error: 'user doesnt exist' });
             return;
         }
       }
 
       if (res === false) {
-        reply('wrong password');
+        reply({ error: 'wrong password' });
       } else {
         reply({ token: tokenForUser(res) });
       }
