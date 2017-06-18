@@ -9,6 +9,7 @@ require('env2')('./config.env');
 
 server.connection({
   port: process.env.PORT || 4000,
+  routes: { cors: true },
 });
 
 server.register([hapi_auth_basic, hapi_auth_jwt2], err => {

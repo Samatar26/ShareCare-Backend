@@ -8,6 +8,7 @@ module.exports = {
   },
   handler: (request, reply) => {
     const { email, password } = request.payload;
+    console.log(email, password);
     basicValidation(email, password, (err, res) => {
       if (err) {
         console.log(err);
