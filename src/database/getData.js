@@ -22,4 +22,11 @@ data.getUsersById = (inputId, cb) => {
   );
 };
 
+data.getHomeOwners = cb => {
+  connection.query('Select * FROM HomeownerProfile', (err, res) => {
+    if (err) return cb(err);
+    cb(null, res.rows);
+  });
+};
+
 module.exports = data;
