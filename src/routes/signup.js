@@ -10,14 +10,15 @@ module.exports = {
     auth: false,
   },
   handler: (request, reply) => {
-    const { email, password } = request.payload;
+    const { email, password } = JSON.parse(request.payload);
     const hashedPassword = encryptPassword(password).then(hashedPassword => {
       data.getUsers(email, (err, res) => {
-        if (err) console.log(err);
-
+        console.log(email, password);
+        if (err) console.log('THEEEE RERRROOROR', err);
         if (res.length) {
+          console.log(res[0].email);
           // reply({error: 'Email is in use'})
-          reply.redirect('/');
+          reply({ error: 'Email is in use' });
         } else {
           postData.CreateUser(email, hashedPassword, (err, res) => {
             if (err) reply('dad');

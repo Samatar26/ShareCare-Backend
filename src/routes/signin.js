@@ -7,6 +7,7 @@ module.exports = {
     auth: false,
   },
   handler: (request, reply) => {
+    console.log(request.payload);
     const { email, password } = JSON.parse(request.payload);
     basicValidation(email, password, (err, res) => {
       if (err) {
@@ -18,7 +19,7 @@ module.exports = {
             reply({ error: 'bcrypt error' });
             return;
           case 'User not found':
-            reply({ error: 'user doesnt exist' });
+            reply({ error: 'User not found' });
             return;
         }
       }

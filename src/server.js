@@ -12,7 +12,7 @@ server.connection({
   routes: { cors: true },
 });
 
-server.register([hapi_auth_basic, hapi_auth_jwt2], err => {
+server.register([hapi_auth_jwt2], err => {
   if (err) {
     console.log(err);
     throw err;
@@ -23,8 +23,6 @@ server.register([hapi_auth_basic, hapi_auth_jwt2], err => {
     validateFunc: validate,
     verifyOptions: { algorithms: ['HS256'] },
   });
-
-  server.auth.strategy('simple', 'basic', { validateFunc: basicValidation });
 
   server.auth.default('jwt');
   server.route(routes);
