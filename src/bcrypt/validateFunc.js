@@ -18,14 +18,18 @@ const validate = (decoded, request, cb) => {
 
 const basicValidation = (email, inputPassword, cb) => {
   data.getUsers(email, (err, res) => {
-    if (err) return cb(err);
+    if (err) return cb(new Error('database'));
     if (res.length) {
       bcrypt.compare(inputPassword, res[0].password, (err, isMatch) => {
-        if (err) return cb(err);
-        return cb(null, res[0]);
+        if (err) return cb(new Error('bcrypt'));
+        if (isMatch === true) {
+          return cb(null, res[0]);
+        } else {
+          return cb(null, false);
+        }
       });
     } else {
-      return cb(new Error('user not found'));
+      return cb(new Error('User not found'));
     }
   });
 };

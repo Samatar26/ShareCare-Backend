@@ -2,6 +2,6 @@ module.exports = {
   method: 'GET',
   path: '/',
   handler: (request, reply) => {
-    reply('Working server');
+    reply({ message: 'Super secret code is ABC123' });
   },
 };
